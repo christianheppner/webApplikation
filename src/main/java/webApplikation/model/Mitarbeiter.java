@@ -1,6 +1,7 @@
 
 package webApplikation.model;
 
-public class Mitarbeiter {
-
+public class Mitarbeiter 
+{
+	public String Vorname;
 }

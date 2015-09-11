@@ -16,6 +16,17 @@
 		</tr>
 	</thead>
 	<tbody>
+	<tr ng-repeat="item in lstMitarbeiter">
+		<td>
+			{{item.Vorname}}
+		</td>
+		<td>
+			{{item.Nachname}}
+		</td>
+		<td>
+			<button class="btn btn-danger">Delete</button>
+		</td>
+	</tr>
 	</tbody>
 </table>
 </div>

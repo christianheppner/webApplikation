@@ -33,17 +33,20 @@
 	                        otherwise({
 	                          redirectTo: '/tabelle'
 	                        });
-	                    }]);
+	                    }]); 
     
 	app.controller('myController', function($scope,$http) {
 
+		$scope.lstMitarbeiter = [];
+		
 	    $scope.LoadTable = function()
 	    {
-	    	$http.get('rest/members').
+	    	$http.get('rest/mitarbeiter/').
 	    	  then(function(response) {
-	    	    console.log(response.status);
+	    	    console.log(response.data);
+	    	    $scope.lstMitarbeiter = response.data;
 	    	  }, function(response) {
-	    		 console.log(response.status);
+	    		 console.log(response.data);
 	    	  });
 		}
 	});
