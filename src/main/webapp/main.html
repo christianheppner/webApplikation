@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/main.css" rel="stylesheet" type="text/css"/>
+</head>
+<body ng-app="myApp">
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"> </a>
+			</div>
+		</div>
+	</nav>
+	<div class="container mainContainer" ng-view></div>
+
+
+	<script type="text/javascript" src="js/libs/angular.js">
+	</script>
+	<script type="text/javascript" src="js/libs/angular-route.js">
+	</script>
+	<script>
+	var app = angular.module('myApp', ['ngRoute']);
+	app.config(['$routeProvider',
+	                    function($routeProvider) {
+	                      $routeProvider.
+	                        when('/tabelle', {
+	                          templateUrl: 'tabelle.html',
+	                          controller: 'myController'
+	                        }).
+	                        otherwise({
+	                          redirectTo: '/tabelle'
+	                        });
+	                    }]);
+    
+	app.controller('myController', function($scope,$http) {
+
+	    $scope.LoadTable = function()
+	    {
+	    	$http.get('rest/members').
+	    	  then(function(response) {
+	    	    console.log(response.status);
+	    	  }, function(response) {
+	    		 console.log(response.status);
+	    	  });
+		}
+	});
+	
+	</script>
+</body>
+</html>
