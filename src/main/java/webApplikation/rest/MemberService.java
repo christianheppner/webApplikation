@@ -66,6 +66,16 @@ public class MemberService {
     @Inject
     MemberRegistration registration;
 
+    
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/hello")
+    public String Hello(){
+    	return "Hello";
+    }
+    
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Member> listAllMembers() {
